@@ -1,5 +1,5 @@
 # Variables del Proyecto
-NAME        = sedIsForLosers
+NAME        = harl2.0
 CXX         = c++
 CXXFLAGS    = -std=c++98 -Wall -Wextra -Werror
 
@@ -9,7 +9,7 @@ OBJ_DIR     = obj
 
 # Archivos Fuente
 SRC_FILES   = main.cpp \
-			  replaceString.cpp
+			  Harl.cpp
 
 # Rutas completas (SRC = src/main.cpp, etc.)
 SRC         = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
