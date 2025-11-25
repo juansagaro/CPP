@@ -11,10 +11,9 @@
 /* ************************************************************************** */
 
 #include <iostream>
-#include <string>
 #include <cctype>
 
-void    put_str_upper(std::string s)
+void    put_str_upper(char *s)
 {
     int     i;
     char    c;
@@ -43,6 +42,6 @@ int main(int argc, char **argv)
         if (i + 1 < argc)
             std::cout << ' ';
     }
-    std::cout << '\n';
+    std::cout << std::endl;
     return (0);
 }

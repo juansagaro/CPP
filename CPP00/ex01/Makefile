@@ -1,9 +1,9 @@
 # Makefile
-NAME    = megaphone
+NAME    = PhoneBook
 CXX     = c++
 CXXFLAGS= -std=c++98 -Wall -Wextra -Werror
 
-SRC     = megaphone.cpp
+SRC     = src/Contact.cpp src/PhoneBook.cpp src/main.cpp
 OBJ     = $(SRC:.cpp=.o)
 
 all: $(NAME)
