@@ -1,9 +1,7 @@
 // Contact.cpp
 #include "../include/Contact.hpp"
 
-Contact::Contact() {
-    // Todos los campos vacíos al crear
-}
+Contact::Contact() {}
 
 void Contact::setFirstName(const std::string& fn) { first_name = fn; }
 void Contact::setLastName(const std::string& ln)   { last_name = ln; }

@@ -2,7 +2,7 @@
 #include "../include/PhoneBook.hpp"
 #include <iostream>
 #include <string>
-#include <cstdlib>   // ← AÑADIDO: para std::atoi
+#include <cstdlib>
 
 static std::string readLine(const std::string& prompt) {
     std::string line;
@@ -17,13 +17,13 @@ static Contact createContact() {
 
     do {
         input = readLine("First name: ");
-        if (input.empty()) std::cout << "No puede estar vacío!\n";  // ← aquí estaba el error
+        if (input.empty()) std::cout << "No puede estar vacío!\n";
     } while (input.empty());
     c.setFirstName(input);
 
     do {
         input = readLine("Last name: ");
-        if (input.empty()) std::cout << "No puede estar vacío!\n";  // ← aquí también
+        if (input.empty()) std::cout << "No puede estar vacío!\n";
     } while (input.empty());
     c.setLastName(input);
 
@@ -71,7 +71,7 @@ int main() {
                 std::cout << "\nIntroduce el índice del contacto a mostrar: ";
                 std::string idx_str;
                 if (std::getline(std::cin, idx_str)) {
-                    int index = std::atoi(idx_str.c_str());  // ahora sí encuentra atoi
+                    int index = std::atoi(idx_str.c_str());
                     phonebook.displayContact(index);
                 }
             }

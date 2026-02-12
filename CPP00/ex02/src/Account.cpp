@@ -56,7 +56,6 @@ Account::Account(int initial_deposit)
               << ";created" << std::endl;
 }
 
-// Constructor privado por defecto (nunca se usa, pero debe existir)
 Account::Account(void)
 : _accountIndex(0), _amount(0), _nbDeposits(0), _nbWithdrawals(0)
 {

@@ -16,7 +16,6 @@ OBJS		= $(SRCS:.cpp=.o)
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
-# Colores estilo años 80 (porque somos cool)
 Y			= \033[38;5;220m
 G			= \033[38;5;46m
 R			= \033[38;5;196m
