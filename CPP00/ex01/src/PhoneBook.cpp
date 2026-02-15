@@ -11,16 +11,13 @@ static std::string truncate(const std::string& str) {
     return str;
 }
 
-PhoneBook::PhoneBook() : count(0), next_index(0) {
-    // Todo a cero / vacío
-}
+PhoneBook::PhoneBook() : count(0), next_index(0) {}
 
 void PhoneBook::addContact(const Contact& new_contact) {
     contacts[next_index] = new_contact;
     next_index = (next_index + 1) % MAX_CONTACTS;
     if (count < MAX_CONTACTS)
         count++;
-    // Si ya teníamos 8, count se mantiene en 8 pero seguimos rotando
 }
 
 int PhoneBook::getCount() const {
