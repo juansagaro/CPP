@@ -43,28 +43,23 @@ void Harl::complain(std::string level) {
     std::string levels[] = { "DEBUG", "INFO", "WARNING", "ERROR" };
     int i = 0;
 
-    // 1. Buscamos qué nivel es (convertimos string a int)
     while (i < 4 && levels[i] != level)
         i++;
 
-    // 2. Switch con Fall-through
     switch (i)
     {
         case 0:
             this->debug();
 			__attribute__ ((fallthrough));
-            // ¡NO hay break! Cae al siguiente
         case 1:
             this->info();
 			__attribute__ ((fallthrough));
-            // ¡NO hay break! Cae al siguiente
         case 2:
             this->warning();
 			__attribute__ ((fallthrough));
-            // ¡NO hay break! Cae al siguiente
         case 3:
             this->error();
-            break; // Aquí sí paramos
+            break;
         default:
             std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
     }

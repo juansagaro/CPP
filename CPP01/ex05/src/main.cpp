@@ -6,7 +6,7 @@
 /*   By: jsagaro- <jsagaro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 21:18:01 by jsagaro-          #+#    #+#             */
-/*   Updated: 2025/11/25 21:49:49 by jsagaro-         ###   ########.fr       */
+/*   Updated: 2026/02/15 20:14:53 by jsagaro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main()
     harl.complain("ERROR");
     
     std::cout << "\n--- PRUEBA 5: INEXISTENTE ---" << std::endl;
-    harl.complain("UNKNOWN"); // No debería imprimir nada
+    harl.complain("UNKNOWN");
 
     return 0;
 }

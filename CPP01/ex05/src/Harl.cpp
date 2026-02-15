@@ -6,7 +6,7 @@
 /*   By: jsagaro- <jsagaro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 21:18:30 by jsagaro-          #+#    #+#             */
-/*   Updated: 2025/11/25 21:48:44 by jsagaro-         ###   ########.fr       */
+/*   Updated: 2026/02/15 20:14:43 by jsagaro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,8 @@ void Harl::error(void) {
 }
 
 void Harl::complain(std::string level) {
-    // 1. Array de los niveles (strings)
     std::string levels[] = { "DEBUG", "INFO", "WARNING", "ERROR" };
 
-    // 2. Array de punteros a funciones miembro
-    // Sintaxis: void (Clase::*nombre)(parametros)
     void (Harl::*ptr_complain[])(void) = {
         &Harl::debug,
         &Harl::info,
@@ -48,14 +45,10 @@ void Harl::complain(std::string level) {
         &Harl::error
     };
 
-    // 3. Iteramos para buscar la coincidencia
     for (int i = 0; i < 4; i++) {
         if (levels[i] == level) {
-            // Llamada a la función miembro.
-            // (this->*ptr)(): Necesitamos 'this' porque estamos dentro de la clase.
             (this->*ptr_complain[i])();
             return;
         }
     }
-    // Opcional: Si no encuentra el nivel, simplemente no hace nada o imprime error.
 }

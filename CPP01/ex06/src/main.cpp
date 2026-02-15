@@ -13,14 +13,12 @@
 #include "../inc/Harl.hpp"
 
 int main(int argc, char **argv) {
-    // Validación de argumentos
     if (argc != 2) {
         std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
         return 1;
     }
 
     Harl harl;
-    // Pasamos el argumento directamente a la función
     harl.complain(argv[1]);
 
     return 0;
