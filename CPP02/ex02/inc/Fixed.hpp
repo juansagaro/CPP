@@ -34,7 +34,6 @@ public:
     float   toFloat(void) const;
     int     toInt(void) const;
 
-    // --- 1. Operadores de Comparación (se mantienen bool) ---
     bool operator>(const Fixed &other) const;
     bool operator<(const Fixed &other) const;
     bool operator>=(const Fixed &other) const;
@@ -42,19 +41,16 @@ public:
     bool operator==(const Fixed &other) const;
     bool operator!=(const Fixed &other) const;
 
-    // --- 2. Operadores Aritméticos (AHORA DEVUELVEN FLOAT) ---
     float operator+(const Fixed &other) const;
     float operator-(const Fixed &other) const;
     float operator*(const Fixed &other) const;
     float operator/(const Fixed &other) const;
 
-    // --- 3. Operadores de Incremento/Decremento (se mantienen Fixed&) ---
-    Fixed&  operator++();       // Pre-incremento
-    Fixed   operator++(int);    // Post-incremento
-    Fixed&  operator--();       // Pre-decremento
-    Fixed   operator--(int);    // Post-decremento
+    Fixed&  operator++();
+    Fixed   operator++(int);
+    Fixed&  operator--();
+    Fixed   operator--(int);
 
-    // --- 4. Funciones Estáticas Min/Max ---
     static Fixed& min(Fixed &a, Fixed &b);
     static Fixed& max(Fixed &a, Fixed &b);
     static const Fixed& min(const Fixed &a, const Fixed &b);

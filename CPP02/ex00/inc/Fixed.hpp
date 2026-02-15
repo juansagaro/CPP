@@ -18,22 +18,17 @@
 class Fixed {
 private:
     int                 _fixedPointValue;
-    static const int    _fractionalBits = 8; // Siempre será 8
+    static const int    _fractionalBits = 8;
 
 public:
-    // 1. Constructor por defecto
     Fixed();
 
-    // 2. Constructor de Copia
     Fixed(const Fixed& other);
 
-    // 3. Operador de Asignación de Copia
     Fixed& operator=(const Fixed& other);
 
-    // 4. Destructor
     ~Fixed();
 
-    // Getters y Setters requeridos
     int     getRawBits(void) const;
     void    setRawBits(int const raw);
 };
