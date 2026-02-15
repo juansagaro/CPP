@@ -4,7 +4,6 @@
 #include <iomanip>
 #include <cstdlib>
 
-// Función auxiliar para truncar a 10 caracteres con punto al final
 static std::string truncate(const std::string& str) {
     if (str.length() > 10)
         return str.substr(0, 9) + ".";
@@ -24,7 +23,6 @@ int PhoneBook::getCount() const {
     return count;
 }
 
-// Función para imprimir una columna con ancho 10
 static void printColumn(const std::string& text) {
     std::cout << std::setw(10) << std::right << truncate(text) << "|";
 }
