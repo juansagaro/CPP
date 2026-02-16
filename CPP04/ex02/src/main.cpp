@@ -15,13 +15,6 @@
 #include "../inc/Cat.hpp"
 
 int main() {
-    // 1. Esto funcionaba antes, pero AHORA DEBE DAR ERROR DE COMPILACIÓN
-    // AAnimal test; 
-    // AAnimal* pointer = new AAnimal();
-    // Descomenta las líneas de arriba para probar que NO compila.
-    // El error será algo como: "cannot instantiate abstract class"
-
-    // 2. Esto SÍ debe funcionar
     std::cout << "--- CREATING DOG ---" << std::endl;
     Dog* j = new Dog();
     
@@ -29,12 +22,11 @@ int main() {
     Cat* i = new Cat();
 
     std::cout << "\n--- ACTIONS ---" << std::endl;
-    j->makeSound(); // Woof
-    i->makeSound(); // Meow
+    j->makeSound();
+    i->makeSound();
 
-    // 3. Polimorfismo sigue funcionando
     std::cout << "\n--- POLYMORPHISM ---" << std::endl;
-    AAnimal* meta = new Dog(); // Puntero AAnimal apuntando a Dog es válido
+    AAnimal* meta = new Dog();
     meta->makeSound();
     delete meta;
 

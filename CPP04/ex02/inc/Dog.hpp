@@ -18,17 +18,16 @@
 
 class Dog : public AAnimal {
 private:
-    Brain* _brain; // <--- Nuevo atributo puntero
+    Brain* _brain;
 
 public:
     Dog();
     Dog(const Dog &src);
     Dog &operator=(const Dog &src);
-    virtual ~Dog(); // Virtual es buena práctica aunque herede
+    virtual ~Dog();
 
     virtual void makeSound() const;
-    
-    // Método extra para probar que las ideas son independientes
+
     void compareIdeas(const Dog &other) const;
 };
 

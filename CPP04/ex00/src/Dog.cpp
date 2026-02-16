@@ -14,7 +14,7 @@
 #include "../inc/Dog.hpp"
 
 Dog::Dog() {
-    this->type = "Dog"; // Configuramos el tipo
+    this->type = "Dog";
     std::cout << "Dog constructed" << std::endl;
 }
 

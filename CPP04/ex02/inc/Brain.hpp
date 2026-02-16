@@ -18,7 +18,7 @@
 
 class Brain {
 public:
-    std::string ideas[100]; // Public para acceder fácil en este ejercicio
+    std::string ideas[100];
 
     Brain();
     Brain(const Brain &src);

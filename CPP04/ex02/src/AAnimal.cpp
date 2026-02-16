@@ -35,4 +35,3 @@ AAnimal::~AAnimal() {
 std::string AAnimal::getType() const {
     return this->type;
 }
-// NOTA: makeSound() ha desaparecido del .cpp

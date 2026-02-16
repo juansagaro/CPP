@@ -22,7 +22,7 @@ public:
     Cat(const Cat &src);
     Cat &operator=(const Cat &src);
     ~Cat();
-    void makeSound() const; // Sobrescribe la del padre
+    void makeSound() const;
 };
 
 #endif

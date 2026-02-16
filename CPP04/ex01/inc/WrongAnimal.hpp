@@ -21,14 +21,12 @@ protected:
     std::string type;
 
 public:
-    // Constructores y Destructor (OCF)
     WrongAnimal();
     WrongAnimal(const WrongAnimal &src);
     WrongAnimal &operator=(const WrongAnimal &src);
-    ~WrongAnimal(); // ¡ERROR: Debería ser virtual, pero aquí lo hacemos mal a propósito!
+    ~WrongAnimal();
 
-    // Métodos
-    void makeSound() const; // ¡ERROR: Sin virtual no hay polimorfismo!
+    void makeSound() const;
     std::string getType() const;
 };
 

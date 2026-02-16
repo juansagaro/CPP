@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../inc/AMateria.hpp"
-#include "../inc/ICharacter.hpp" // Aquí sí necesitamos la definición completa
+#include "../inc/ICharacter.hpp"
 
 AMateria::AMateria() : _type("default") {}
 
@@ -22,7 +22,7 @@ AMateria::AMateria(const AMateria &src) {
 }
 
 AMateria &AMateria::operator=(const AMateria &src) {
-    (void)src; // No copiamos el tipo, se mantiene el que ya tenía
+    (void)src;
     return *this;
 }
 
@@ -33,6 +33,5 @@ std::string const & AMateria::getType() const {
 }
 
 void AMateria::use(ICharacter& target) {
-    // Implementación base por defecto (puede estar vacía)
     (void)target;
 }

@@ -23,7 +23,7 @@ public:
     Dog &operator=(const Dog &src);
     ~Dog();
 
-    void makeSound() const; // Sobrescribe la del padre
+    void makeSound() const;
 };
 
 #endif

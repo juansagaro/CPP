@@ -16,7 +16,7 @@
 # include <iostream>
 # include <string>
 
-class ICharacter; // Forward declaration (Rompe la dependencia circular)
+class ICharacter;
 
 class AMateria {
 protected:
@@ -29,9 +29,9 @@ public:
     AMateria &operator=(const AMateria &src);
     virtual ~AMateria();
 
-    std::string const & getType() const; // Getter
+    std::string const & getType() const;
 
-    virtual AMateria* clone() const = 0; // Método Puro (Abstracto)
+    virtual AMateria* clone() const = 0;
     virtual void use(ICharacter& target);
 };
 

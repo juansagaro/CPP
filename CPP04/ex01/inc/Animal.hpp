@@ -25,11 +25,9 @@ public:
     Animal();
     Animal(const Animal &src);
     Animal &operator=(const Animal &src);
-    
-    // IMPORTANTE: Destructor virtual para evitar leaks al borrar hijos
+
     virtual ~Animal();
 
-    // IMPORTANTE: 'virtual' permite que los hijos sobrescriban este comportamiento
     virtual void makeSound() const;
     
     std::string getType() const;

@@ -22,27 +22,25 @@ Character::Character(std::string const & name) : _name(name) {
         this->_inventory[i] = NULL;
 }
 
-// Deep Copy Constructor
 Character::Character(const Character &src) : _name(src._name) {
     for (int i = 0; i < 4; i++) {
         if (src._inventory[i])
-            this->_inventory[i] = src._inventory[i]->clone(); // Clonar!
+            this->_inventory[i] = src._inventory[i]->clone();
         else
             this->_inventory[i] = NULL;
     }
 }
 
-// Deep Copy Assignment
 Character &Character::operator=(const Character &src) {
     if (this != &src) {
         this->_name = src._name;
-        // 1. Borrar lo viejo
+
         for (int i = 0; i < 4; i++) {
             if (this->_inventory[i])
                 delete this->_inventory[i];
             this->_inventory[i] = NULL;
         }
-        // 2. Clonar lo nuevo
+
         for (int i = 0; i < 4; i++) {
             if (src._inventory[i])
                 this->_inventory[i] = src._inventory[i]->clone();
@@ -67,14 +65,14 @@ void Character::equip(AMateria* m) {
     for (int i = 0; i < 4; i++) {
         if (this->_inventory[i] == NULL) {
             this->_inventory[i] = m;
-            return; // Equipado y salimos
+            return;
         }
     }
 }
 
 void Character::unequip(int idx) {
     if (idx >= 0 && idx < 4) {
-        // NO HACEMOS DELETE (Según enunciado)
+
         this->_inventory[idx] = NULL;
     }
 }

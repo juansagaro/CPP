@@ -17,14 +17,11 @@
 
 class WrongCat : public WrongAnimal {
 public:
-    // Constructores y Destructor (OCF)
     WrongCat();
     WrongCat(const WrongCat &src);
     WrongCat &operator=(const WrongCat &src);
     ~WrongCat();
 
-    // Intentamos sobrescribir la función, pero sin virtual en el padre,
-    // esto es solo "shadowing" (ocultación), no "overriding" (sobrescritura).
     void makeSound() const;
 };
 

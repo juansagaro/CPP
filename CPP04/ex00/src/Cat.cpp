@@ -14,7 +14,7 @@
 #include "../inc/Cat.hpp"
 
 Cat::Cat() {
-    this->type = "Cat"; // Configuramos el tipo
+    this->type = "Cat";
     std::cout << "Cat constructed" << std::endl;
 }
 

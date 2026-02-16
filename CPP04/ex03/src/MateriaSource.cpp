@@ -57,15 +57,14 @@ void MateriaSource::learnMateria(AMateria* m) {
             return;
         }
     }
-    // Si llegamos aquí, está lleno. Borramos m para evitar leak
-    // ya que el usuario espera que nosotros gestionemos la memoria al pasárnosla.
+
     delete m; 
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type) {
     for (int i = 0; i < 4; i++) {
         if (_templates[i] && _templates[i]->getType() == type)
-            return _templates[i]->clone(); // Devolvemos una copia
+            return _templates[i]->clone();
     }
     return 0;
 }

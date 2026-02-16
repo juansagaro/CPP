@@ -14,29 +14,22 @@
 
 Dog::Dog() {
     this->type = "Dog";
-    this->_brain = new Brain(); // 1. MALLOC AL NACER
+    this->_brain = new Brain();
     std::cout << "Dog constructed with a brain" << std::endl;
 }
 
-// COPIA PROFUNDA (Constructor de copia)
 Dog::Dog(const Dog &src) : AAnimal(src) {
-    // NO HACER: this->_brain = src._brain; (Esto sería puntero compartido)
-    
-    // SI HACER: Crear nuevo cerebro y copiar el contenido
     this->_brain = new Brain(*src._brain); 
     std::cout << "Dog copy constructed" << std::endl;
 }
 
-// COPIA PROFUNDA (Operador de asignación)
 Dog &Dog::operator=(const Dog &src) {
     if (this != &src) {
-        AAnimal::operator=(src); // Copiar parte de Animal
+        AAnimal::operator=(src);
         
-        // 1. Borrar mi cerebro viejo (si tengo) para evitar leaks
         if (this->_brain)
             delete this->_brain;
-        
-        // 2. Crear cerebro nuevo copiado del otro
+
         this->_brain = new Brain(*src._brain);
     }
     std::cout << "Dog assigned" << std::endl;
@@ -44,7 +37,7 @@ Dog &Dog::operator=(const Dog &src) {
 }
 
 Dog::~Dog() {
-    delete this->_brain; // 2. FREE AL MORIR
+    delete this->_brain;
     std::cout << "Dog destroyed and brain deleted" << std::endl;
 }
 

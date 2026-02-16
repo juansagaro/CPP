@@ -12,7 +12,6 @@
 
 #include "../inc/WrongAnimal.hpp"
 
-// --- OCF ---
 WrongAnimal::WrongAnimal() : type("WrongAnimal") {
     std::cout << "WrongAnimal constructed" << std::endl;
 }
@@ -32,7 +31,6 @@ WrongAnimal::~WrongAnimal() {
     std::cout << "WrongAnimal destroyed" << std::endl;
 }
 
-// --- Métodos ---
 void WrongAnimal::makeSound() const {
     std::cout << "WrongAnimal makes a weird generic sound..." << std::endl;
 }

@@ -18,7 +18,7 @@
 
 class MateriaSource : public IMateriaSource {
 private:
-    AMateria* _templates[4]; // Guarda copias para clonar
+    AMateria* _templates[4];
 
 public:
     MateriaSource();

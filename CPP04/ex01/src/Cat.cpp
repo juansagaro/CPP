@@ -14,29 +14,22 @@
 
 Cat::Cat() {
     this->type = "Cat";
-    this->_brain = new Brain(); // 1. MALLOC AL NACER
+    this->_brain = new Brain();
     std::cout << "Cat constructed with a brain" << std::endl;
 }
 
-// COPIA PROFUNDA (Constructor de copia)
 Cat::Cat(const Cat &src) : Animal(src) {
-    // NO HACER: this->_brain = src._brain; (Esto sería puntero compartido)
-    
-    // SI HACER: Crear nuevo cerebro y copiar el contenido
     this->_brain = new Brain(*src._brain); 
     std::cout << "Cat copy constructed" << std::endl;
 }
 
-// COPIA PROFUNDA (Operador de asignación)
 Cat &Cat::operator=(const Cat &src) {
     if (this != &src) {
-        Animal::operator=(src); // Copiar parte de Animal
-        
-        // 1. Borrar mi cerebro viejo (si tengo) para evitar leaks
+        Animal::operator=(src);
+
         if (this->_brain)
             delete this->_brain;
-        
-        // 2. Crear cerebro nuevo copiado del otro
+
         this->_brain = new Brain(*src._brain);
     }
     std::cout << "Cat assigned" << std::endl;
@@ -44,7 +37,7 @@ Cat &Cat::operator=(const Cat &src) {
 }
 
 Cat::~Cat() {
-    delete this->_brain; // 2. FREE AL MORIR
+    delete this->_brain;
     std::cout << "Cat destroyed and brain deleted" << std::endl;
 }
 

@@ -25,13 +25,9 @@ public:
     AAnimal();
     AAnimal(const AAnimal &src);
     AAnimal &operator=(const AAnimal &src);
-    
-    // Destructor virtual (CRUCIAL como siempre)
+
     virtual ~AAnimal();
 
-    // --- EL CAMBIO ESTÁ AQUÍ ---
-    // El "= 0" convierte a esta función en "Virtual Pura".
-    // Esto hace que la clase sea ABSTRACTA automáticamente.
     virtual void makeSound() const = 0;
     
     std::string getType() const;
