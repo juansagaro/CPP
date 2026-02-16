@@ -17,8 +17,6 @@ int main() {
     FragTrap robot("Clappy");
 
     std::cout << "\n--- PROBANDO ATAQUE HEREDADO ---" << std::endl;
-    // Usará el mensaje de "ClapTrap::attack" porque no lo sobrescribimos,
-    // PERO hará 30 de daño porque cambiamos la variable _attackDamage.
     robot.attack("TargetDummy"); 
 
     std::cout << "\n--- PROBANDO HABILIDAD ESPECIAL ---" << std::endl;

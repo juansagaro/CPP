@@ -15,18 +15,15 @@
 
 # include "ClapTrap.hpp"
 
-// FragTrap hereda públicamente de ClapTrap
 class FragTrap : virtual public ClapTrap {
 
 public:
-    // OCF (Constructores y Destructor)
     FragTrap();
     FragTrap(std::string name);
     FragTrap(const FragTrap &other);
     FragTrap &operator=(const FragTrap &other);
     ~FragTrap();
 
-    // Método especial único de FragTrap
     void highFivesGuys(void);
 };
 

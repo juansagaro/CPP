@@ -17,16 +17,15 @@ int main() {
     ScavTrap robot("Guardian");
 
     std::cout << "\n--- PROBANDO ATAQUE (Debe ser mensaje nuevo) ---" << std::endl;
-    robot.attack("Intruder"); // Debería hacer 20 de daño
+    robot.attack("Intruder");
 
     std::cout << "\n--- PROBANDO GUARD GATE ---" << std::endl;
     robot.guardGate();
 
     std::cout << "\n--- PROBANDO HERENCIA (Métodos de ClapTrap) ---" << std::endl;
-    robot.takeDamage(10); // Heredado
-    robot.beRepaired(10); // Heredado
+    robot.takeDamage(10);
+    robot.beRepaired(10);
 
     std::cout << "\n--- DESTRUYENDO (Orden inverso) ---" << std::endl;
-    // Al salir del scope, verás primero el destructor de ScavTrap, luego ClapTrap
     return 0;
 }

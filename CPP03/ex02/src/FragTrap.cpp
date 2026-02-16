@@ -13,8 +13,6 @@
 #include "../inc/FragTrap.hpp"
 #include <iostream>
 
-// --- CONSTRUCTORES ---
-
 FragTrap::FragTrap() : ClapTrap() {
     this->_hitPoints = 100;
     this->_energyPoints = 100;
@@ -41,13 +39,9 @@ FragTrap &FragTrap::operator=(const FragTrap &other) {
     return *this;
 }
 
-// --- DESTRUCTOR ---
-
 FragTrap::~FragTrap() {
     std::cout << "FragTrap " << this->_name << " destructor called." << std::endl;
 }
-
-// --- MÉTODO ESPECIAL ---
 
 void FragTrap::highFivesGuys(void) {
     if (_hitPoints <= 0) {

@@ -6,7 +6,7 @@
 /*   By: jsagaro- <jsagaro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 12:43:36 by jsagaro-          #+#    #+#             */
-/*   Updated: 2026/02/02 12:55:09 by jsagaro-         ###   ########.fr       */
+/*   Updated: 2026/02/16 11:53:11 by jsagaro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 class DiamondTrap : public ScavTrap, public FragTrap {
 private:
-    std::string _name; // Propiedad propia del DiamondTrap (Shadowing)
+    std::string _name;
 
 public:
     DiamondTrap();
@@ -27,7 +27,6 @@ public:
     DiamondTrap &operator=(const DiamondTrap &other);
     ~DiamondTrap();
 
-    // Traemos el método attack() de ScavTrap explícitamente para evitar ambigüedad
     using ScavTrap::attack; 
 
     void whoAmI();

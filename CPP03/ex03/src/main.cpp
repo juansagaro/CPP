@@ -17,15 +17,12 @@ int main() {
     DiamondTrap monster("Monster");
 
     std::cout << "\n--- DATOS DEL MONSTRUO ---" << std::endl;
-    // HP hereda de FragTrap (100)
-    // Energy hereda de ScavTrap (50)
-    // Attack hereda de FragTrap (30)
     monster.whoAmI();
 
     std::cout << "\n--- ACCIONES ---" << std::endl;
-    monster.attack("Victim"); // Debería usar ScavTrap::attack
-    monster.highFivesGuys();  // De FragTrap
-    monster.guardGate();      // De ScavTrap
+    monster.attack("Victim");
+    monster.highFivesGuys();
+    monster.guardGate();
 
     std::cout << "\n--- DESTRUCCIÓN ---" << std::endl;
     return 0;
