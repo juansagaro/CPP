@@ -12,7 +12,6 @@
 
 #include "../inc/Fixed.hpp"
 
-// --- Constructores y Destructores (Igual que Ex01) ---
 Fixed::Fixed() : _fixedPointValue(0) {}
 
 Fixed::Fixed(const int n) {
@@ -36,7 +35,6 @@ Fixed& Fixed::operator=(const Fixed& other) {
 
 Fixed::~Fixed() {}
 
-// --- Getters / Setters / Conversión ---
 int Fixed::getRawBits(void) const { return this->_fixedPointValue; }
 void Fixed::setRawBits(int const raw) { this->_fixedPointValue = raw; }
 
@@ -48,7 +46,6 @@ int Fixed::toInt(void) const {
     return this->_fixedPointValue >> _fractionalBits;
 }
 
-// --- 1. Operadores de Comparación ---
 bool Fixed::operator>(const Fixed &other) const {
     return this->_fixedPointValue > other._fixedPointValue;
 }
@@ -68,26 +65,22 @@ bool Fixed::operator!=(const Fixed &other) const {
     return this->_fixedPointValue != other._fixedPointValue;
 }
 
-// --- 2. Operadores Aritméticos (Devuelven FLOAT) ---
-// Al devolver float, la estrategia más limpia es convertir ambos a float,
-// operar y devolver el resultado.
-float Fixed::operator+(const Fixed &other) const {
-    return this->toFloat() + other.toFloat();
+Fixed Fixed::operator+(const Fixed &other) const {
+    return Fixed(this->toFloat() + other.toFloat());
 }
 
-float Fixed::operator-(const Fixed &other) const {
-    return this->toFloat() - other.toFloat();
+Fixed Fixed::operator-(const Fixed &other) const {
+    return Fixed(this->toFloat() - other.toFloat());
 }
 
-float Fixed::operator*(const Fixed &other) const {
-    return this->toFloat() * other.toFloat();
+Fixed Fixed::operator*(const Fixed &other) const {
+    return Fixed(this->toFloat() * other.toFloat());
 }
 
-float Fixed::operator/(const Fixed &other) const {
-    return this->toFloat() / other.toFloat();
+Fixed Fixed::operator/(const Fixed &other) const {
+    return Fixed(this->toFloat() / other.toFloat());
 }
 
-// --- 3. Incremento / Decremento ---
 Fixed& Fixed::operator++() {
     this->_fixedPointValue++;
     return *this;
@@ -109,8 +102,6 @@ Fixed Fixed::operator--(int) {
     this->_fixedPointValue--;
     return temp;
 }
-
-// --- 4. Min / Max (SIN OPERADOR TERNARIO) ---
 
 Fixed& Fixed::min(Fixed &a, Fixed &b) {
     if (a < b) {
@@ -140,7 +131,6 @@ const Fixed& Fixed::max(const Fixed &a, const Fixed &b) {
     return b;
 }
 
-// --- Sobrecarga de Stream global ---
 std::ostream &operator<<(std::ostream &o, Fixed const &i) {
     o << i.toFloat();
     return o;

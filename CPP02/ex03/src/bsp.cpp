@@ -12,7 +12,7 @@
 
 #include "../inc/Point.hpp"
 
-// Función auxiliar para calcular el producto cruz 2D: (Bx - Ax) * (Py - Ay) - (By - Ay) * (Px - Ax)
+// Producto cruz 2D: (Bx - Ax) * (Py - Ay) - (By - Ay) * (Px - Ax)
 static Fixed cross_product(Point const a, Point const b, Point const p) {
     return (b.getX() - a.getX()) * (p.getY() - a.getY()) - (b.getY() - a.getY()) * (p.getX() - a.getX());
 }
