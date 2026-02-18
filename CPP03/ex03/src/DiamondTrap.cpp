@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsagaro- <jsagaro-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsagaro- <jsagaro-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 12:44:00 by jsagaro-          #+#    #+#             */
-/*   Updated: 2026/02/16 11:54:43 by jsagaro-         ###   ########.fr       */
+/*   Updated: 2026/02/17 20:39:58 by jsagaro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ DiamondTrap::DiamondTrap(std::string name)
       _name(name)
 {
     this->_hitPoints = FragTrap::_hitPoints; 
-    this->_energyPoints = ScavTrap::_energyPoints; 
+    this->_energyPoints = 50; 
     this->_attackDamage = FragTrap::_attackDamage;
     
     std::cout << "DiamondTrap " << _name << " constructed!" << std::endl;
@@ -34,7 +34,7 @@ DiamondTrap::DiamondTrap()
       _name("Default") 
 {
     this->_hitPoints = FragTrap::_hitPoints;
-    this->_energyPoints = ScavTrap::_energyPoints;
+    this->_energyPoints = 50;
     this->_attackDamage = FragTrap::_attackDamage;
     std::cout << "DiamondTrap Default constructed!" << std::endl;
 }
