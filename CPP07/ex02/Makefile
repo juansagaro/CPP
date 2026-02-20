@@ -1,12 +1,11 @@
-NAME        = identifyRealType
+NAME        = array
 CXX         = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wno-shadow
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC_DIR     = src
 OBJ_DIR     = obj
 
 SRC_FILES   =	main.cpp \
-				Base.cpp
 
 SRC         = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 

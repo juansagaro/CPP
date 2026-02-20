@@ -1,0 +1,66 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Array.tpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsagaro- <jsagaro-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/20 17:09:37 by jsagaro-          #+#    #+#             */
+/*   Updated: 2026/02/20 17:14:00 by jsagaro-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+# pragma once
+
+template <typename T>
+Array<T>::Array() : _array(NULL), _size(0) {}
+
+template <typename T>
+Array<T>::Array(unsigned int n) : _array(new T[n]()), _size(n) {}
+
+template <typename T>
+Array<T>::Array(const Array& src) : _array(NULL), _size(0) {
+    *this = src;
+}
+
+template <typename T>
+Array<T>& Array<T>::operator=(const Array& src) {
+    if (this != &src) {
+        delete[] _array;
+        _size = src._size;
+        
+        if (_size > 0) {
+            _array = new T[_size]();
+            for (unsigned int i = 0; i < _size; i++) {
+                _array[i] = src._array[i];
+            }
+        } else {
+            _array = NULL;
+        }
+    }
+    return *this;
+}
+
+template <typename T>
+Array<T>::~Array() {
+    delete[] _array;
+}
+
+template <typename T>
+T& Array<T>::operator[](unsigned int index) {
+    if (index >= _size)
+        throw OutOfBoundsException();
+    return _array[index];
+}
+
+template <typename T>
+const T& Array<T>::operator[](unsigned int index) const {
+    if (index >= _size)
+        throw OutOfBoundsException();
+    return _array[index];
+}
+
+template <typename T>
+unsigned int Array<T>::size() const {
+    return _size;
+}

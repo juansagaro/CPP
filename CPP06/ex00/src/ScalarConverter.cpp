@@ -30,14 +30,19 @@ static e_type detectType(const std::string& literal) {
 
     char* endptr;
 
-    std::strtol(literal.c_str(), &endptr, 10);
-    if (*endptr == '\0' && endptr != literal.c_str()) return INT;
+    double val = std::strtod(literal.c_str(), &endptr);
 
-    std::strtod(literal.c_str(), &endptr);
-    
     if (endptr == literal.c_str()) return IMPOSSIBLE;
 
-    if (*endptr == '\0') return DOUBLE;
+    if (*endptr == '\0') {
+        if (literal.find('.') == std::string::npos) {
+            if (val >= std::numeric_limits<int>::min() && val <= std::numeric_limits<int>::max())
+                return INT;
+            else
+                return DOUBLE;
+        }
+        return DOUBLE;
+    }
 
     if (*endptr == 'f' && *(endptr + 1) == '\0') return FLOAT;
 
