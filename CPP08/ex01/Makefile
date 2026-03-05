@@ -1,4 +1,4 @@
-NAME        = array
+NAME        = span
 CXX         = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -6,6 +6,7 @@ SRC_DIR     = src
 OBJ_DIR     = obj
 
 SRC_FILES   =	main.cpp \
+				Span.cpp
 
 SRC         = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 

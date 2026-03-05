@@ -1,4 +1,4 @@
-NAME        = array
+NAME        = mutatedAbomination
 CXX         = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 

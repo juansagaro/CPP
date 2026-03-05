@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsagaro- <jsagaro-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsagaro- <jsagaro-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 19:46:00 by jsagaro-          #+#    #+#             */
-/*   Updated: 2026/02/20 20:31:36 by jsagaro-         ###   ########.fr       */
+/*   Updated: 2026/02/21 20:01:32 by jsagaro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/easyfind.hpp"
 
 int main() {
-    std::cout  << "--- Test 1: Buscando en un std::vector ---" << std::endl;
+    std::cout  << "--- TEST 1: Buscando en un std::vector ---" << std::endl;
     
     std::vector<int> vec;
     vec.push_back(10);
@@ -33,7 +33,7 @@ int main() {
         std::cerr << e.what() << std::endl;
     }
 
-    std::cout << "\n--- Test 2: Buscando en un std::list ---" << std::endl;
+    std::cout << "\n--- TEST 2: Buscando en un std::list ---" << std::endl;
 
     std::list<int> lst;
     lst.push_back(1);
