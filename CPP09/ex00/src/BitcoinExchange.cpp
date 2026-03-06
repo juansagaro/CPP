@@ -6,7 +6,7 @@
 /*   By: jsagaro- <jsagaro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 12:10:34 by jsagaro-          #+#    #+#             */
-/*   Updated: 2026/03/04 21:18:02 by jsagaro-         ###   ########.fr       */
+/*   Updated: 2026/03/06 17:05:34 by jsagaro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void BitcoinExchange::loadDatabase(const std::string& filename) {
     }
 
     std::string line;
-    std::getline(file, line); // Saltamos la cabecera "date,exchange_rate"
+    std::getline(file, line);
 
     while (std::getline(file, line)) {
         size_t commaPos = line.find(',');
@@ -65,7 +65,6 @@ void BitcoinExchange::processInput(const std::string& filename) {
         if (firstLine) {
             firstLine = false;
             std::string trimmed = trim(line);
-            // Saltar la cabecera solo si coincide con el formato esperado
             if (trimmed == "date | value" || trimmed == "date|value")
                 continue;
         }
@@ -82,7 +81,6 @@ void BitcoinExchange::processLine(const std::string& line) {
         return;
     }
 
-    // Buscar el pipe sin depender de espacios
     size_t pipePos = trimmedLine.find('|');
 
     if (pipePos == std::string::npos) {
@@ -90,7 +88,6 @@ void BitcoinExchange::processLine(const std::string& line) {
         return;
     }
 
-    // Comprobar que no hay más de un pipe
     if (trimmedLine.find('|', pipePos + 1) != std::string::npos) {
         std::cerr << "Error: bad input => " << trimmedLine << std::endl;
         return;
