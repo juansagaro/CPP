@@ -6,47 +6,67 @@
 /*   By: jsagaro- <jsagaro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 20:02:48 by jsagaro-          #+#    #+#             */
-/*   Updated: 2026/03/06 20:53:06 by jsagaro-         ###   ########.fr       */
+/*   Updated: 2026/03/12 19:50:20 by jsagaro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PMERGEME_HPP
-# define PMERGEME_HPP
+#pragma once
 
-# include <iostream>
-# include <vector>
-# include <deque>
-# include <string>
-# include <sstream>
-# include <cstdlib>
-# include <sys/time.h>
-# include <algorithm>
+#include <iostream>
+#include <vector>
+#include <deque>
+#include <string>
+#include <cstdlib>
+#include <sys/time.h>
+#include <algorithm>
+
+// ═══════════════════════════════════════════════════════════════════════════
+// ANSI Color Codes
+// ═══════════════════════════════════════════════════════════════════════════
+#define RESET   "\033[0m"
+#define BOLD    "\033[1m"
+#define DIM     "\033[2m"
+#define GREEN   "\033[32m"
+#define YELLOW  "\033[33m"
+#define BLUE    "\033[34m"
+#define MAGENTA "\033[35m"
+#define CYAN    "\033[36m"
+#define WHITE   "\033[37m"
+
+// ═══════════════════════════════════════════════════════════════════════════
+// Configuration
+// ═══════════════════════════════════════════════════════════════════════════
+#define MAX_DISPLAY 10
 
 class PmergeMe {
-private:
-    std::vector<int> _vector;
-    std::deque<int>  _deque;
-    double           _timeVector;
-    double           _timeDeque;
-
-    void sortVector();
-    void mergeInsertVector(std::vector<int>& arr);
-    
-    void sortDeque();
-    void mergeInsertDeque(std::deque<int>& arr);
-
-    size_t getJacobsthal(size_t n);
-    std::vector<size_t> generateJacobsthalSequence(size_t size);
-
-    double getTime() const;
-
 public:
     PmergeMe();
     PmergeMe(const PmergeMe& src);
     PmergeMe& operator=(const PmergeMe& src);
     ~PmergeMe();
 
-    void execute(int argc, char **argv);
-};
+    void execute(int argc, char** argv);
 
-#endif
+private:
+    // ─── Data ───────────────────────────────────────────────────────────────
+    std::vector<int> _vec;
+    std::deque<int>  _deq;
+    double           _timeVec;
+    double           _timeDeq;
+
+    // ─── Sorting ────────────────────────────────────────────────────────────
+    void fordJohnson(std::vector<int>& arr);
+    void fordJohnson(std::deque<int>& arr);
+
+    // ─── Jacobsthal ─────────────────────────────────────────────────────────
+    static size_t              jacobsthal(size_t n);
+    static std::vector<size_t> jacobsthalSequence(size_t size);
+    static std::vector<size_t> buildInsertionOrder(size_t pendSize);
+
+    // ─── Utils ──────────────────────────────────────────────────────────────
+    static double now();
+    static int    parseNumber(const std::string& arg);
+    static void   printSequence(const std::string& label, 
+                                const std::vector<int>& arr, 
+                                const std::string& color);
+};
