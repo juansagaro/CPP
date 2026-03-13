@@ -6,7 +6,7 @@
 /*   By: jsagaro- <jsagaro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 17:13:45 by jsagaro-          #+#    #+#             */
-/*   Updated: 2026/03/06 19:02:12 by jsagaro-         ###   ########.fr       */
+/*   Updated: 2026/03/13 19:25:39 by jsagaro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@
 # include <string>
 # include <stack>
 # include <cstdlib>
+# include <sstream>
 
 class RPN {
 private:
     std::stack<int> _stack;
 
-    bool isOperator(char c) const;
-    bool performOperation(char op);
+    bool isOperator(const std::string& token) const;
+    bool performOperation(const std::string& op);
+    bool isNumber(const std::string& token) const;
 
 public:
     RPN();

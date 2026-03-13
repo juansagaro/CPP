@@ -6,7 +6,7 @@
 /*   By: jsagaro- <jsagaro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 12:10:34 by jsagaro-          #+#    #+#             */
-/*   Updated: 2026/03/06 17:05:34 by jsagaro-         ###   ########.fr       */
+/*   Updated: 2026/03/13 19:11:16 by jsagaro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& src) {
     return *this;
 }
 BitcoinExchange::~BitcoinExchange() {}
+
+static std::string trim(const std::string& str) {
+    size_t start = str.find_first_not_of(" \t");
+    if (start == std::string::npos)
+        return "";
+    size_t end = str.find_last_not_of(" \t");
+    return str.substr(start, end - start + 1);
+}
 
 void BitcoinExchange::loadDatabase(const std::string& filename) {
     std::ifstream file(filename.c_str());
@@ -41,14 +49,6 @@ void BitcoinExchange::loadDatabase(const std::string& filename) {
         }
     }
     file.close();
-}
-
-static std::string trim(const std::string& str) {
-    size_t start = str.find_first_not_of(" \t");
-    if (start == std::string::npos)
-        return "";
-    size_t end = str.find_last_not_of(" \t");
-    return str.substr(start, end - start + 1);
 }
 
 void BitcoinExchange::processInput(const std::string& filename) {
@@ -73,6 +73,18 @@ void BitcoinExchange::processInput(const std::string& filename) {
     file.close();
 }
 
+bool BitcoinExchange::parseLine(const std::string& trimmedLine, std::string& date, std::string& valueStr) const {
+    size_t pipePos = trimmedLine.find('|');
+
+    if (pipePos == std::string::npos || trimmedLine.find('|', pipePos + 1) != std::string::npos) {
+        return false;
+    }
+
+    date = trim(trimmedLine.substr(0, pipePos));
+    valueStr = trim(trimmedLine.substr(pipePos + 1));
+    return true;
+}
+
 void BitcoinExchange::processLine(const std::string& line) {
     std::string trimmedLine = trim(line);
 
@@ -81,37 +93,24 @@ void BitcoinExchange::processLine(const std::string& line) {
         return;
     }
 
-    size_t pipePos = trimmedLine.find('|');
-
-    if (pipePos == std::string::npos) {
+    std::string date;
+    std::string valueStr;
+    if (!parseLine(trimmedLine, date, valueStr)) {
         std::cerr << "Error: bad input => " << trimmedLine << std::endl;
         return;
     }
 
-    if (trimmedLine.find('|', pipePos + 1) != std::string::npos) {
-        std::cerr << "Error: bad input => " << trimmedLine << std::endl;
-        return;
-    }
-
-    std::string date = trim(trimmedLine.substr(0, pipePos));
-    std::string valueStr = trim(trimmedLine.substr(pipePos + 1));
     float value;
-
     if (date.empty() || !isValidDate(date)) {
         std::cerr << "Error: bad input => " << date << std::endl;
         return;
     }
 
-    if (valueStr.empty()) {
-        std::cerr << "Error: bad input => " << trimmedLine << std::endl;
+    if (valueStr.empty() || !isValidValue(valueStr, value)) {
         return;
     }
 
-    if (!isValidValue(valueStr, value)) {
-        return;
-    }
-
-    std::map<std::string, float>::iterator it = _database.lower_bound(date);
+    std::map<std::string, float>::const_iterator it = _database.lower_bound(date);
 
     if (it == _database.end() || it->first != date) {
         if (it == _database.begin()) {

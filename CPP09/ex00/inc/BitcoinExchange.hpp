@@ -6,7 +6,7 @@
 /*   By: jsagaro- <jsagaro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 12:10:01 by jsagaro-          #+#    #+#             */
-/*   Updated: 2026/03/04 19:18:11 by jsagaro-         ###   ########.fr       */
+/*   Updated: 2026/03/13 19:11:20 by jsagaro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ private:
 
     bool isValidDate(const std::string& date) const;
     bool isValidValue(const std::string& valueStr, float& value) const;
+    bool parseLine(const std::string& trimmedLine, std::string& date, std::string& valueStr) const;
     void processLine(const std::string& line);
 
 public:

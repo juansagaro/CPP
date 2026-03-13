@@ -6,11 +6,12 @@
 /*   By: jsagaro- <jsagaro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 17:14:59 by jsagaro-          #+#    #+#             */
-/*   Updated: 2026/03/06 19:18:46 by jsagaro-         ###   ########.fr       */
+/*   Updated: 2026/03/13 19:51:13 by jsagaro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/RPN.hpp"
+#include <sstream>
 
 RPN::RPN() {}
 RPN::RPN(const RPN& src) : _stack(src._stack) {}
@@ -28,18 +29,18 @@ void RPN::calculate(const std::string& expression) {
         return;
     }
 
-    for (size_t i = 0; i < expression.length(); i++) {
-        char c = expression[i];
+    std::istringstream iss(expression);
+    std::string token;
 
-        if (std::isspace(c))
-            continue;
-        else if (std::isdigit(c))
-            _stack.push(c - '0');
-        else if (isOperator(c)) {
-            if (!performOperation(c))
+    while (iss >> token) {
+        if (isNumber(token)) {
+            _stack.push(std::atoi(token.c_str()));
+        } else if (isOperator(token)) {
+            if (!performOperation(token)) {
                 return;
+            }
         } else {
-            std::cerr << "Error: invalid token '" << c << "'." << std::endl;
+            std::cerr << "Error: invalid token '" << token << "'." << std::endl;
             return;
         }
     }
@@ -55,11 +56,30 @@ void RPN::calculate(const std::string& expression) {
     std::cout << _stack.top() << std::endl;
 }
 
-bool RPN::isOperator(char c) const {
-    return (c == '+' || c == '-' || c == '*' || c == '/');
+bool RPN::isNumber(const std::string& token) const {
+    if (token.empty()) return false;
+    size_t i = 0;
+    if (token[0] == '-' && token.length() > 1) {
+        i = 1;
+    }
+    
+    if (token.length() - i > 1) {
+        return false;
+    }
+
+    for (; i < token.length(); ++i) {
+        if (!std::isdigit(token[i])) {
+            return false;
+        }
+    }
+    return true;
 }
 
-bool RPN::performOperation(char op) {
+bool RPN::isOperator(const std::string& token) const {
+    return token.length() == 1 && (token[0] == '+' || token[0] == '-' || token[0] == '*' || token[0] == '/');
+}
+
+bool RPN::performOperation(const std::string& op) {
     if (_stack.size() < 2) {
         std::cerr << "Error: not enough operands for operator '" << op << "'." << std::endl;
         return false;
@@ -72,7 +92,7 @@ bool RPN::performOperation(char op) {
 
     int result = 0;
 
-    switch (op) {
+    switch (op[0]) {
         case '+': result = left + right; break;
         case '-': result = left - right; break;
         case '*': result = left * right; break;
